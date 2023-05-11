@@ -13,9 +13,9 @@ A Python script that measures typing speed and accuracy by generating random sen
 2. Open a terminal or command prompt.
 3. Install the required libraries using the following command:
 
-'''
+```
 pip3 install curses nltk
-'''
+```
 
 ## How to Run
 
@@ -23,9 +23,9 @@ pip3 install curses nltk
 2. Navigate to the directory where the `typingtest.py` file is located.
 3. Run the script using the following command:
 
-'''
+```
 python3 typingtest.py
-'''
+```
 
 ## User Interface
 
