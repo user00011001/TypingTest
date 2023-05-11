@@ -9,19 +9,23 @@ A Python script that measures typing speed and accuracy by generating random sen
 
 ## Installation
 
-1. Clone the repository or download the `typing_speed_test.py` file to your computer.
+1. Clone the repository or download the `typingtest.py` file to your computer.
 2. Open a terminal or command prompt.
 3. Install the required libraries using the following command:
 
-'''pip3 install curses nltk'''
+'''
+pip3 install curses nltk
+'''
 
 ## How to Run
 
 1. Open a terminal or command prompt.
-2. Navigate to the directory where the `typing_speed_test.py` file is located.
+2. Navigate to the directory where the `typingtest.py` file is located.
 3. Run the script using the following command:
 
-'''python3 typingtest.py'''
+'''
+python3 typingtest.py
+'''
 
 ## User Interface
 
