@@ -1,28 +1,39 @@
-#Typing Speed Test
-This is a Python script that tests your typing speed and accuracy. It randomly generates a sentence and measures how fast and accurately you can type it.
+# Typing Speed Test
 
-Dependencies
-The script uses the following libraries:
+A Python script that measures typing speed and accuracy by generating random sentences for the user to type. It provides real-time feedback on typing speed in words per minute (WPM) and accuracy percentage.
 
-curses: for the terminal user interface.
-nltk: for generating the random sentences using English words.
+## Dependencies
 
-How to Run
-The script is a standalone Python script. You can run it directly from the terminal:
+- `curses`: A library for creating terminal-based user interfaces.
+- `nltk`: A library for natural language processing.
 
-python typing_speed_test.py
+## Installation
 
-After running the script, you will be presented with a randomly generated sentence. Type this sentence as fast and accurately as you can. The script will measure your typing speed in words per minute and your accuracy.
+1. Clone the repository or download the `typing_speed_test.py` file to your computer.
+2. Open a terminal or command prompt.
+3. Install the required libraries using the following command:
 
-User Interface
-The user interface uses different colors to highlight the sentence, your input, and any typing errors. The color scheme is as follows:
+pip install curses nltk
 
-Green: The sentence to be typed.
-Blue: The letters you type correctly.
-Red: The letters you type incorrectly.
-The interface also provides instructions and results of the typing test.
+## How to Run
 
-Notes
-The script measures typing speed in words per minute, where a word is assumed to be 5 characters long. This is a common standard in typing speed tests.
+1. Open a terminal or command prompt.
+2. Navigate to the directory where the `typing_speed_test.py` file is located.
+3. Run the script using the following command:
 
-The script uses the NLTK corpus of English words to generate the sentences, so it requires an internet connection for the first run.
+python3 typingtest.py
+
+## User Interface
+
+The script uses different colors to highlight the sentence, your input, and any typing errors. The color scheme is as follows:
+
+- **Green**: The sentence to be typed.
+- **Blue**: The letters you type correctly.
+- **Red**: The letters you type incorrectly.
+
+The interface also provides instructions and displays the typing speed and accuracy results.
+
+## Notes
+
+- The script measures typing speed in words per minute (WPM), assuming a word length of 5 characters.
+- The script uses the NLTK corpus of English words to generate random sentences. The first run may require an internet connection to download the corpus.
