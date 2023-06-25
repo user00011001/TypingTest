@@ -14,10 +14,10 @@ def main(stdscr):
     curses.curs_set(0)
 
     # Initialize color pairs
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
-    curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
-    curses.init_pair(4, curses.COLOR_BLUE, curses.COLOR_BLACK)
+    for i in range(1, 8):
+        curses.init_pair(i, i, curses.COLOR_BLACK)
+
+    color_counter = 1
 
     while True:
         quote = get_random_quote()
@@ -28,7 +28,10 @@ def main(stdscr):
         stdscr.addstr("\n" + "*" * 80 + "\n", curses.color_pair(1))
         stdscr.addstr("🚀 Welcome to the typing speed test!\n", curses.color_pair(1))
         stdscr.addstr(f"Type the quote below:\n\n", curses.color_pair(1))
-        stdscr.addstr(quote + "\n\n", curses.color_pair(3))
+        for c in quote:
+            stdscr.addstr(c, curses.color_pair(color_counter))
+            color_counter = color_counter % 7 + 1
+        stdscr.addstr("\n\n", curses.color_pair(1))
 
         user_input = ""
         start_time = time.time()
@@ -56,6 +59,9 @@ def main(stdscr):
         c = stdscr.getch()
         if chr(c).lower() == 'q':
             break
+
+if __name__ == "__main__":
+    curses.wrapper(main)
 
 if __name__ == "__main__":
     curses.wrapper(main)
