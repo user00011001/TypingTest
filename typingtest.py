@@ -1,14 +1,12 @@
 import time
 import random
 import curses
-import nltk
+from nltk.corpus import words
 
-WORDS = [word for word in nltk.corpus.words.words() if len(word) >= 5]
-
+WORDS = [word for word in words.words('en') if len(word) >= 5]
 
 def generate_sentence(word_count):
     return ' '.join(random.choice(WORDS) for _ in range(word_count))
-
 
 def main(stdscr):
     curses.curs_set(0)
@@ -23,8 +21,7 @@ def main(stdscr):
 
         stdscr.clear()
         stdscr.addstr("\n" + "*" * 80 + "\n", curses.color_pair(1))
-        stdscr.addstr(
-            "🚀 Welcome to the typing speed test! Type the sentence below:\n", curses.color_pair(1))
+        stdscr.addstr("🚀 Welcome to the typing speed test! Type the sentence below:\n", curses.color_pair(1))
         stdscr.addstr("*" * 80 + "\n\n", curses.color_pair(1))
         stdscr.addstr(sentence + "\n\n", curses.color_pair(3))
 
@@ -54,18 +51,14 @@ def main(stdscr):
         accuracy = (correct_count / len(sentence)) * 100
 
         stdscr.addstr("\n\n" + "-" * 80 + "\n", curses.color_pair(1))
-        stdscr.addstr("🎉 Typing speed: {:.2f} words per minute.\n".format(
-            wpm), curses.color_pair(1))
-        stdscr.addstr("🎯 Typing accuracy: {:.2f}%.\n".format(
-            accuracy), curses.color_pair(1))
-        stdscr.addstr("Press any key to try again, 'q' to quit.\n",
-                      curses.color_pair(1))
+        stdscr.addstr(f"🎉 Typing speed: {wpm:.2f} words per minute.\n", curses.color_pair(1))
+        stdscr.addstr(f"🎯 Typing accuracy: {accuracy:.2f}%.\n", curses.color_pair(1))
+        stdscr.addstr("Press any key to try again, 'q' to quit.\n", curses.color_pair(1))
         stdscr.addstr("-" * 80 + "\n", curses.color_pair(1))
 
         c = stdscr.getch()
         if chr(c).lower() == 'q':
             break
-
 
 if __name__ == "__main__":
     curses.wrapper(main)
