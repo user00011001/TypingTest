@@ -1,14 +1,18 @@
 # Keyboard Game
 
-A simple web-based keyboard game where you have to type random keys as they are highlighted on the screen.
+The Keyboard Game is a simple browser-based game where you need to press the correct keys on your keyboard to score points. It tests your typing speed and accuracy while providing an enjoyable gaming experience.
 
 ## How to Play
 
 1. Open the `index.html` file in a web browser.
-2. The game will start automatically.
-3. Look for the highlighted key on the keyboard layout.
-4. Type the corresponding key on your physical keyboard.
-5. If you press the correct key, you will hear a keyboard sound and the highlighted key will change.
-6. The game will continue with new keys appearing randomly.
-7. Keep typing the correct keys to score points and improve your typing speed.
-8. To restart the game, refresh the web page.
+2. The game will display a virtual keyboard with highlighted keys.
+3. Pay attention to the highlighted key and quickly press the corresponding key on your physical keyboard.
+4. If you press the correct key, you will score a point and the highlighted key will change.
+5. The game continues until you make a mistake or close the browser tab.
+
+## Features
+
+- Dynamic highlighting of keys to indicate the active key to press.
+- Score tracking to keep track of your performance.
+- Realistic jumping animation for the character.
+- Randomly generated obstacles (cacti) for added challenge.
