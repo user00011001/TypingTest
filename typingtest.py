@@ -1,54 +1,51 @@
 import time
-import random
+import requests
 import curses
-from nltk.corpus import words
+from difflib import SequenceMatcher
 
-WORDS = [word for word in words.words('en') if len(word) >= 5]
+API_URL = "https://zenquotes.io/api/random"
 
-def generate_sentence(word_count):
-    return ' '.join(random.choice(WORDS) for _ in range(word_count))
+def get_random_quote():
+    response = requests.get(API_URL)
+    data = response.json()
+    return data[0]['q'] if data else "The quick brown fox jumps over the lazy dog."
 
 def main(stdscr):
     curses.curs_set(0)
 
+    # Initialize color pairs
     curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(4, curses.COLOR_BLUE, curses.COLOR_BLACK)
 
     while True:
-        sentence = generate_sentence(10)
+        quote = get_random_quote()
 
         stdscr.clear()
+
+        # UI enhancements with colors and structure
         stdscr.addstr("\n" + "*" * 80 + "\n", curses.color_pair(1))
-        stdscr.addstr("🚀 Welcome to the typing speed test! Type the sentence below:\n", curses.color_pair(1))
-        stdscr.addstr("*" * 80 + "\n\n", curses.color_pair(1))
-        stdscr.addstr(sentence + "\n\n", curses.color_pair(3))
+        stdscr.addstr("🚀 Welcome to the typing speed test!\n", curses.color_pair(1))
+        stdscr.addstr(f"Type the quote below:\n\n", curses.color_pair(1))
+        stdscr.addstr(quote + "\n\n", curses.color_pair(3))
 
-        correct_count = 0
         user_input = ""
-
         start_time = time.time()
 
-        while len(user_input) != len(sentence):
+        while len(user_input) != len(quote):
             c = stdscr.getch()
             if c == 127 or c == 8:  # handle backspace
                 user_input = user_input[:-1]
                 stdscr.addstr("\b \b")
             elif c < 256:  # ignore non-ascii input
-                if len(sentence) > len(user_input) and chr(c) == sentence[len(user_input)]:
-                    stdscr.addstr(chr(c), curses.color_pair(4))
-                    correct_count += 1
-                else:
-                    stdscr.addstr(chr(c), curses.color_pair(2))
+                stdscr.addstr(chr(c), curses.color_pair(4 if quote[len(user_input)] == chr(c) else 2))
                 user_input += chr(c)
 
         end_time = time.time()
-
         time_taken = end_time - start_time
-
-        wpm = (correct_count / 5 / time_taken) * 60
-        accuracy = (correct_count / len(sentence)) * 100
+        accuracy = SequenceMatcher(None, user_input, quote).ratio() * 100  # calculate accuracy based on similarity
+        wpm = (len(user_input) / 5 / time_taken) * 60
 
         stdscr.addstr("\n\n" + "-" * 80 + "\n", curses.color_pair(1))
         stdscr.addstr(f"🎉 Typing speed: {wpm:.2f} words per minute.\n", curses.color_pair(1))
@@ -62,3 +59,4 @@ def main(stdscr):
 
 if __name__ == "__main__":
     curses.wrapper(main)
+
