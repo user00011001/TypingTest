@@ -3,16 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>keygame</title>
-    <!-- add icon link -->
     <link rel="icon" href="favicon.png" type="png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        #gameArea {
+            position: relative;
+            height: 260px;
+            width: 750px;
+            background-color: #573c566b;
+            margin-top: 2em;
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+
+        #dino {
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            height: 50px;
+            width: 50px;
+            background-color: transparent;
+            transition: left 0.2s ease-in-out;
+        }
+
+        .obstacle {
+            position: absolute;
+            bottom: 0;
+            right: -50px;
+            height: 50px;
+            width: 50px;
+            background-color: transparent;
+            animation: moveObstacle 1.8s linear infinite;
+        }
+
+        @keyframes moveObstacle {
+            from {
+                right: -50px;
+            }
+
+            to {
+                right: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <h1 class="title">Keyboard Game</h1>
+        <div id="score">Score: 0</div>
+        <div id="gameArea">
+            <div id="dino"></div>
+            <div class="obstacle"></div>
+        </div>
         <div class="keyboard">
             <ul class="row row-0">
                 <li class="pinky" id="esc">ESC</li>
@@ -76,6 +120,7 @@
                 <li class="pinky" id="right-shift">SHIFT</li>
             </ul>
         </div>
+    </div>
     </div>
 
     <script src="./script.js"></script>
