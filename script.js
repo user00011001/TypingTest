@@ -65,8 +65,8 @@ const dino = document.getElementById("dino");
 let isJumping = false;
 let jumpInterval;
 let jumpStart;
-let jumpHeight = 120; // Adjust the jump height
-let jumpDuration = 800; // Adjust the jump duration
+let jumpHeight = 120;
+let jumpDuration = 800; 
 
 function jump() {
     if (!isJumping) {
