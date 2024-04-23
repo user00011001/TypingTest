@@ -1,5 +1,5 @@
-# Cactus Jump
-Cactus Jump is an interactive browser-based game designed to help you improve your typing speed and accuracy. By translating your keystrokes into jumps, the game offers an engaging way to perfect your keyboard skills while having an exciting gaming experience.
+# Keyboard Game
+This Keyboard typing game is an interactive browser-based game designed to help you improve your typing speed and accuracy. By translating your keystrokes into jumps, the game offers an engaging way to perfect your keyboard skills while having an exciting gaming experience.
 
 ## Game Instructions
 
